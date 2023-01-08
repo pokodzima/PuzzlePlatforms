@@ -13,5 +13,11 @@ UCLASS()
 class PUZZLEPLATFORMS_API UPuzzlePlatformsGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
+
+	UFUNCTION(Exec)
+	void Host();
 	
+	UFUNCTION(Exec)
+	void Join(const FString& Address);
 };
