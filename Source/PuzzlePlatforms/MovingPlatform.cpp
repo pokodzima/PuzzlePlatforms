@@ -24,6 +24,19 @@ void AMovingPlatform::BeginPlay()
 	GlobalTargetLocation = GetTransform().TransformPosition(TargetLocation);
 }
 
+void AMovingPlatform::AddActiveTrigger()
+{
+	ActiveTriggers++;
+}
+
+void AMovingPlatform::RemoveActiveTrigger()
+{
+	if (ActiveTriggers > 0)
+	{
+		ActiveTriggers--;
+	}
+}
+
 void AMovingPlatform::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
@@ -33,7 +46,11 @@ void AMovingPlatform::Tick(float DeltaSeconds)
 		return;
 	}
 
-
+	if (ActiveTriggers == 0)
+	{
+		return;
+	}
+	
 	FVector Location = GetActorLocation();
 	const float JourneyLength = (GlobalTargetLocation - GlobalStartLocation).Length();
 	const float JourneyTravelled = (Location - GlobalStartLocation).Length();
