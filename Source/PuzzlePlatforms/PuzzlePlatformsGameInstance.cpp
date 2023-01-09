@@ -7,7 +7,7 @@ void UPuzzlePlatformsGameInstance::Host()
 {
 	if (UEngine* Engine = GetEngine())
 	{
-		Engine->AddOnScreenDebugMessage(0,2, FColor::Green, TEXT("Hosting"));
+		Engine->AddOnScreenDebugMessage(0, 2, FColor::Green, TEXT("Hosting"));
 	}
 
 	if (UWorld* World = GetWorld())
@@ -21,5 +21,10 @@ void UPuzzlePlatformsGameInstance::Join(const FString& Address)
 	if (UEngine* Engine = GetEngine())
 	{
 		Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Joining %s"), *Address));
+	}
+
+	if (APlayerController* PlayerController = GetFirstLocalPlayerController())
+	{
+		PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
 	}
 }
