@@ -9,6 +9,11 @@ void UPuzzlePlatformsGameInstance::Host()
 	{
 		Engine->AddOnScreenDebugMessage(0,2, FColor::Green, TEXT("Hosting"));
 	}
+
+	if (UWorld* World = GetWorld())
+	{
+		World->ServerTravel("/Game/PuzzlePlatforms/Maps/ThirdPersonMap?listen");
+	}
 }
 
 void UPuzzlePlatformsGameInstance::Join(const FString& Address)
