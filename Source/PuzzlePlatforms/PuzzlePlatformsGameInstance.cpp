@@ -2,6 +2,14 @@
 
 
 #include "PuzzlePlatformsGameInstance.h"
+#include "Blueprint/UserWidget.h"
+
+UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitializer& ObjectInitializer)
+{
+	ConstructorHelpers::FClassFinder<UUserWidget> UserWidgetBPClass(TEXT("/Game/MenuSystem/WBP_MainMenu"));
+	
+	MenuClass = UserWidgetBPClass.Class;
+}
 
 void UPuzzlePlatformsGameInstance::Host()
 {
