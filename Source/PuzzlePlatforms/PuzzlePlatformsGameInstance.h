@@ -13,13 +13,16 @@ UCLASS()
 class PUZZLEPLATFORMS_API UPuzzlePlatformsGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
-    
-    public:
-    UPuzzlePlatformsGameInstance(const FObjectInitializer & ObjectInitializer);
+
+public:
+	UPuzzlePlatformsGameInstance(const FObjectInitializer& ObjectInitializer);
+
+	UFUNCTION(BlueprintCallable)
+	void LoadMenu();
 
 	UFUNCTION(Exec)
 	void Host();
-	
+
 	UFUNCTION(Exec)
 	void Join(const FString& Address);
 

@@ -11,6 +11,22 @@ UPuzzlePlatformsGameInstance::UPuzzlePlatformsGameInstance(const FObjectInitiali
 	MenuClass = UserWidgetBPClass.Class;
 }
 
+void UPuzzlePlatformsGameInstance::LoadMenu()
+{
+	if (!MenuClass)
+	{
+		return;
+	}
+	UUserWidget* Menu = CreateWidget<UUserWidget>(this, MenuClass);
+
+	if (!Menu)
+	{
+		return;
+	}
+
+	Menu->AddToViewport();
+}
+
 void UPuzzlePlatformsGameInstance::Host()
 {
 	if (UEngine* Engine = GetEngine())
